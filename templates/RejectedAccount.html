@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/rejectedaccount.css">
+    <link rel="stylesheet" href="/static/form.css">
+</head>
+<body>
+    <div class="alert">
+        <div>
+        {%if code == 1%}
+        <div class="main">
+            (-_-)
+        </div>
+        <div class="secon">
+            Your account is Rejected or Blocked
+        </div>
+        {%elif code == 2%}
+        <div class="main">
+            (*o*)
+        </div>
+        <div class="secon">
+            Your account is under verification
+        </div>
+        {%endif%}
+    </div>
+    </div>
+</body>
+</html>

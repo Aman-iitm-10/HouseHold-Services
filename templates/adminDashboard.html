@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/adminDashboard.css">
+    <link rel="stylesheet" href="/static/form.css">
+</head>
+<body>
+    
+    <div class="navi">
+        <div class="navi-items">
+            <div class="item">
+                <a href="/adminDashboard/0">
+                    Dashboard
+                </a>
+            </div>
+
+            <div class="item">
+                <a href="/adminSearch/0">
+                    Search
+                </a>
+            </div>
+            <div class="item">
+                <a href="/statAdmin/0">
+                    Summary
+                </a>
+            </div>
+            <div class="item">
+                <a href="/adminLn/0">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        {%if code == "aprroved"%}
+            "Approved"
+        {%elif code == "rejected"%}
+            "Rejected"
+        {%elif code == "deleted"%}
+            "Deleted"
+            {%elif code == "edited"%}
+            "Edited"
+            {%endif%}
+        <div class="heading">Services</div>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            {%for i in service%}
+            <div class="list-items">
+                <tr>
+                    <td>
+                        {{i["service_id"]}}
+                    </td>
+                    <td>
+                        {{i["description"]}}
+                    </td>
+                    <td>
+                        {{i["price"]}}
+                    </td>
+                    <td>
+                        <div class="btn">
+                            <a href="/editService/{{i["service_id"]}}/0">
+                                Edit
+                            </a>
+                        </div>
+                        <div class="btn">
+                            <a href="/deleteService/{{i["service_id"]}}/0">
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </div>
+            {%endfor%}
+        </table>
+        </div>
+        <div class="new-service">
+            <a href="/createNewService/0">
+                Create new service
+            </a>
+        </div>
+        <div class="heading">
+        Professionals
+        </div>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Experience</th>
+                <th>Service name</th>
+                <th>Action</th>
+            </tr>
+            {%for i in professional%}
+            <div class="list-items">
+                <tr>
+                    <td>
+                        {{i["professional_id"]}}
+                    </td>
+                    <td>
+                        {{i["username"]}}
+                    </td>
+                    <td>
+                        {{i["experience"]}}
+                    </td>
+                    <td>
+                        {{i["service_type"]}}
+                    </td>
+                    <td>
+                        {%if "a" in i.ac%}
+                        <div class="btn">
+                            <a href="/validProfessional/{{i["professional_id"]}}/Approve">
+                                Approve
+                            </a>
+                        </div>
+                        {%endif%}
+                        {%if "r" in i.ac%}
+                        <div class="btn">
+                            <a href="/validProfessional/{{i["professional_id"]}}/Reject">
+                                Reject
+                            </a>
+                        </div>
+                        {%endif%}
+                        
+                        <div class="btn">
+                            <a href="/validProfessional/{{i["professional_id"]}}/Delete">
+                                Delete
+                            </a>
+                        </div>
+                        
+                        {%if code == ""%}
+                            No actions
+                        {%endif%}
+                    </td>
+                </tr>
+            </div>
+            {%endfor%}
+        </table>
+        </div>
+        <div class="heading">
+        Service Requests
+    </div>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th>ID</th>
+                <th>Assigned Professional (if any)</th>
+                <th>Customer Name</th>
+                <th>Service name</th>
+                <th>Status</th>
+            </tr>
+            {%for i in serviceRequests%}
+            <div class="list-items">
+                <tr>
+                    <td>
+                        {{i["request_id"]}}
+                    </td>
+                    <td>
+                        {{i["prof_username"]}}
+                    </td>
+                    <td>
+                        {{i["customer_username"]}}
+                    </td>
+                    <td>
+                        {{i["service_type"]}}
+                    </td>
+                    <td>
+                        {%if not i["professor_id"]%}
+                        <div class="btn">
+                            
+                                Pending
+                            
+                        </div>
+                        {%elif i["service_status"] == "Accepted"%}
+                        <div class="btn">
+                            
+                            Accepted
+                            
+                        </div>
+                        {%elif i["service_status"] == "Close"%}
+                        <div class="btn">
+                            
+                            Closed
+                        {%else%}
+                        </div>
+                        {%endif%}
+                    </td>
+                </tr>
+            </div>
+            {%endfor%}
+        </table>
+        </div>
+    </div>
+</body>
+</html>

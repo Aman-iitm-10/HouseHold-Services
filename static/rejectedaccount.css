@@ -1,0 +1,25 @@
+.alert {
+    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    font-size: 34px;
+    color: cadetblue;
+    display: flex;
+    
+    justify-content: center;
+    padding: 10px;
+}
+.secon {
+    font-size: 28px;
+    
+    color: rgb(202, 204, 204);
+    
+    
+}

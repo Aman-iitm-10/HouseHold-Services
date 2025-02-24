@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/form.css">
+    <link rel="stylesheet" href="/static/adminDashboard.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    {%if page == "admin"%}
+    <div class="navi">
+        <div class="navi-items">
+            <div class="item">
+                <a href="/adminDashboard/0">
+                    Dashboard
+                </a>
+            </div>
+
+            <div class="item">
+                <a href="/adminSearch/0">
+                    Search
+                </a>
+            </div>
+            <div class="item">
+                <a href="/statAdmin/0">
+                    Summary
+                </a>
+            </div>
+            <div class="item">
+                <a href="/adminLn/0">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row p-5">
+        <div class="col">
+            <img src="/static/admin1.png" width="350px" height="300px"/>
+        </div>
+        <div class="col">
+            <img src="/static/admin2.png" width="350px" height="300px"/>
+        </div>
+    </div>
+    {%elif page == "customer"%}
+    <div class="navi">
+        <div class="navi-items">
+            <div class="item">
+                <a href="/customerDashboard/{{customer_id}}/0">
+                    Dashboard
+                </a>
+            </div>
+            <div class="item">
+                Search
+            </div>
+            <div class="item">
+                <a href="/statCostomer/0">
+                    Summary
+                </a>
+            </div>
+            <div class="item">
+                <a href="/customerLn/0">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row p-5">
+        <div class="col">
+            <img src="/static/customer1.png" width="350px" height="300px"/>
+        </div>
+        <div class="col">
+            <img src="/static/customer2.png" width="350px" height="300px"/>
+        </div>
+    </div>
+    {%elif page == "professional"%}
+    <div class="navi">
+        <div class="navi-items">
+            <div class="item">
+            <a href="/professionalDashboard/{{prof_name}}/None">
+                Dashboard
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="/professionalSearch/{{prof_id}}">
+                Search
+            </a>
+        </div>
+        <div class="item">
+            <a href="/professionalSummary/{{prof_name}}">
+                Summary
+            </a>
+        </div>
+        <div class="item">
+            <a href="/professionalLn/0">
+                Log out
+            </a>
+        </div>
+        </div>
+        
+        <div class="row p-5">
+            <div class="col">
+                <img src="/static/professional1.png" width="350px" height="300px"/>
+            </div>
+            <div class="col">
+                <img src="/static/professional2.png" width="350px" height="300px"/>
+            </div>
+        </div>
+        {%endif%}
+</body>
+</html>

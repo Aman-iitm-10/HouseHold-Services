@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="floating">
+        <div class="row search-buttons">
+            <form action="/professionalSearch/{{prof_id}}"
+            <div class="col-5">
+
+            </div>
+            <div class="col-2">
+                <select name="search">
+                    <option value="service_status">service_status</option>
+                    <option value="Pincode">Pincode</option>
+                    <option value="date_of_request">Date</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <input type="text" name="search-value" placeholder="value" />
+            </div>
+            <div class="btn">
+                <button type="submit">Search</button>
+            </div>
+        </div>
+        <div class="row search-results">
+            {%if l and n%}
+                <div class="row">
+                    <div class="col-1">
+                        Username
+                    </div>
+                    <div class="col-2">
+                        Description
+                    </div>
+                    <div class="col-1">
+                        Pincode
+                    </div>
+                    <div class="col-1">
+                        Price
+                    </div>
+                    <div class="col-1">
+                        Duration
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                </div>
+                {%for i in l%}
+                    <div class="row list-search-services">
+                        <div class="col-1">
+                            {{i["customer_details"]["username"]}}
+                        </div>
+                        <div class="col-2">
+                            {{i["description"]}}
+                        </div>
+                        <div class="col-1">
+                            {{i["service_details"]["pincode"]}}
+                        </div>
+                        <div class="col-1">
+                            {{i["service_details"]["price"]}}
+                        </div>
+                        <div class="col-1">
+                            {{i["service_details"]["duration"]}}
+                        </div>
+                        <div class="col-3">
+                            <div class="col-4">
+                                <div class="btn">
+                                    <a href="/professionalRequestResponse/{{i['request_id']}}/{{prof_id}}/accept">
+                                        Accept
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="btn">
+                                    <a href="/professionalRequestResponse/{{i['request_id']}}/{{prof_id}}/accept">
+                                        Decline
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="btn">
+                                    <a href="/professionalViewService/{{i['request_id']}}/{{prof_id}}/searchPage">
+                                        View
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}
+                {%for i in n%}
+                <div class="row list-search-services">
+                    <div class="col-1">
+                        {{i["customer_details"]["username"]}}
+                    </div>
+                    <div class="col-2">
+                        {{i["description"]}}
+                    </div>
+                    <div class="col-1">
+                        {{i["service_details"]["pincode"]}}
+                    </div>
+                    <div class="col-1">
+                        {{i["service_details"]["price"]}}
+                    </div>
+                    <div class="col-1">
+                        {{i["service_details"]["duration"]}}
+                    </div>
+                    <div class="col-3">
+                        <div class="col-4">
+                            <div class="btn">
+                                <a href="/professionalRequestResponse/{{i['request_id']}}/{{prof_id}}/accept">
+                                    Accept
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="btn">
+                                <a href="/professionalRequestResponse/{{i['request_id']}}/{{prof_id}}/accept">
+                                    Decline
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="btn">
+                                <a href="/professionalViewService/{{i['request_id']}}/{{prof_id}}/searchPage">
+                                    View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            {%endif%}
+        </div>
+    </div>
+</body>
+</html>
